@@ -14,7 +14,7 @@ extension Application {
         var password: String
         var domain: String
         
-        init(user: String, password: String, domain: String) {
+        public init(user: String, password: String, domain: String) {
             self.user = user
             self.password = password
             self.domain = domain
