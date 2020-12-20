@@ -58,24 +58,24 @@ public class Medias: Wordpress {
 
 
 public struct WordpressMedia: Content {
-    let id: Int?
-    let date, date_gmt: Date?
-    let guid: Object?
-    let modified, modified_gmt: Date?
-    let slug, status: String?
-    let type: String?
-    let link: String?
-    let description: Object?
-    let author, featured_media: Int?
-    let comment_status, ping_status: String?
-    let sticky: Bool?
-    let template, format: String?
-    let media_type, mime_type: String?
-    let source_url: String?
-    let post: Int?
-    let caption: Object?
+    public let id: Int?
+    public let date, date_gmt: Date?
+    public let guid: Object?
+    public let modified, modified_gmt: Date?
+    public let slug, status: String?
+    public let type: String?
+    public let link: String?
+    public let description: Object?
+    public let author, featured_media: Int?
+    public let comment_status, ping_status: String?
+    public let sticky: Bool?
+    public let template, format: String?
+    public let media_type, mime_type: String?
+    public let source_url: String?
+    public let post: Int?
+    public let caption: Object?
     
-    init(id: Int? = nil,
+    public init(id: Int? = nil,
          date: Date? = nil,
          date_gmt: Date? = nil,
          guid: Object? = nil,
@@ -125,6 +125,6 @@ public struct WordpressMedia: Content {
 }
 
 public struct DeletedMedia: Content{
-    let deleted: Bool?
-    let previous: WordpressMedia?
+    public let deleted: Bool?
+    public let previous: WordpressMedia?
 }

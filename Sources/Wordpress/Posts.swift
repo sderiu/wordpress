@@ -150,24 +150,24 @@ public class Posts: Wordpress {
 }
 
 public struct WordpressPost: Content {
-    let id: Int?
-    let password: String?
-    let date, date_gmt: Date?
-    let guid: Object?
-    let modified, modified_gmt: Date?
-    let slug, status: String?
-    let type: String?
-    let link: String?
-    let title: Object?
-    let content, excerpt: Object?
-    let author, featured_media: Int?
-    let comment_status, ping_status: String?
-    let sticky: Bool?
-    let template, format: String?
-    let categories, tags: [Int]?
-    let featured_image_url: String?
+    public let id: Int?
+    public let password: String?
+    public let date, date_gmt: Date?
+    public let guid: Object?
+    public let modified, modified_gmt: Date?
+    public let slug, status: String?
+    public let type: String?
+    public let link: String?
+    public let title: Object?
+    public let content, excerpt: Object?
+    public let author, featured_media: Int?
+    public let comment_status, ping_status: String?
+    public let sticky: Bool?
+    public let template, format: String?
+    public let categories, tags: [Int]?
+    public let featured_image_url: String?
     
-    init(id: Int? = nil,
+    public init(id: Int? = nil,
          password: String? = nil,
          date: Date? = nil,
          date_gmt: Date? = nil,
@@ -220,10 +220,10 @@ public struct WordpressPost: Content {
 
 // MARK: - Content
 public struct Object: Content {
-    let rendered: String?
-    let protected: Bool?
+    public let rendered: String?
+    public let protected: Bool?
     
-    init(rendered: String? = nil,
+    public init(rendered: String? = nil,
          protected: Bool? = nil) {
         self.rendered = rendered
         self.protected = protected
