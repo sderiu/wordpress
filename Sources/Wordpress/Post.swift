@@ -7,7 +7,7 @@
 
 import Vapor
 
-class Post: Wordpress {
+public class Post: Wordpress {
     
     /// Create a post on wordpress
     ///

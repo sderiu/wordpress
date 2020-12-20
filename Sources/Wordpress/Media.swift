@@ -7,7 +7,7 @@
 
 import Vapor
 
-class Media: Wordpress {
+public class Media: Wordpress {
     
     /// Upload a media on wordpress.
     ///

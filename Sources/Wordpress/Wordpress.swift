@@ -12,8 +12,8 @@ public class Wordpress{
     internal var domain: String
     internal var request: Request
 
-    var posts: Post
-    var media: Media
+    public var posts: Post
+    public var media: Media
     
     init(_ req: Request) {
         self.domain = req.application.wordpress.domain
@@ -50,7 +50,7 @@ struct WordpressPost: Content {
     }
 }
 
-struct WordpressPostResponse: Content {
+public struct WordpressPostResponse: Content {
     var title: WordpressTitle
     var content: WordpressTitle
     var featured_media: Int
