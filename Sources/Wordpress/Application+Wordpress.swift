@@ -13,6 +13,12 @@ extension Application {
         var user: String
         var password: String
         var domain: String
+        
+        init(user: String, password: String, domain: String) {
+            self.user = user
+            self.password = password
+            self.domain = domain
+        }
     }
     
     public struct WordpressConfigurationKey: StorageKey {
