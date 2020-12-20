@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Wordpress",
+    name: "wordpress",
     platforms: [
         .macOS(.v10_15)
     ],
