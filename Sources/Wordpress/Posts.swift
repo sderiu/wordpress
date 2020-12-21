@@ -92,7 +92,7 @@ public class Posts: Wordpress {
                        status: String? = nil,
                        type: String? = nil,
                        link: String? = nil,
-                       title: String,
+                       title: String? = nil,
                        content: String? = nil,
                        excerpt: String? = nil,
                        author: Int? = nil,
