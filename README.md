@@ -23,7 +23,7 @@ app.wordpress = .init(user: "YOUR_USERNAME",
 
 ### Usage
 #### Posts
-The function for posts management are accessible directly from Request 
+The functions for posts management are accessible directly from Request 
 ###### Create
 ```ruby
 func createPost(_ req: Request) throws -> EventLoopFuture<WordpressPost>{
@@ -94,6 +94,6 @@ a http client is accessible from requests to extend the implemented functions.
 
 ```ruby
 func myCustomWPRequest(_ req: Request) throws -> EventLoopFuture<MyCustomReturnType>{
-  return req,wordpress.client ... // all availables http methods with wordpress basic auth header.
+  return req.wordpress.client. ... // all availables http methods with wordpress basic auth header.
 }
 ```
