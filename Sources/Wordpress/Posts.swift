@@ -43,14 +43,12 @@ public class Posts {
 
     public func create(id: Int? = nil,
                        password: String? = nil,
-                       modified: Date? = nil,
-                       modified_gmt: Date? = nil,
                        slug: String? = nil,
                        status: String? = nil,
                        type: String? = nil,
                        link: String? = nil,
                        title: String,
-                       content: String? = nil,
+                       content: String,
                        excerpt: String? = nil,
                        author: Int? = nil,
                        featured_media: Int? = nil,
@@ -62,22 +60,13 @@ public class Posts {
                        categories: [Int]? = nil,
                        tags: [Int]? = nil) throws
     -> EventLoopFuture<WordpressPost> {
-        let post = WordpressPost(id:id,
-                                 password: password,
-                                 slug: slug,
+        let post = WordpressPostCreateRequest(slug: slug,
                                  status: status,
                                  type: type,
                                  link: link,
-                                 title: Object(rendered: title),
-                                 content: Object(rendered: content),
-                                 excerpt: Object(rendered: excerpt),
-                                 author: author,
+                                 title:  title,
+                                 content: content,
                                  featured_media: featured_media,
-                                 comment_status: comment_status,
-                                 ping_status: ping_status,
-                                 sticky: sticky,
-                                 template: template,
-                                 format: format,
                                  categories: categories,
                                  tags: tags)
         let url = URI(string:"\(self.domain)\(Endpoints.posts.rawValue)")
@@ -155,6 +144,36 @@ public class Posts {
             }
     }
 
+}
+
+public struct WordpressPostCreateRequest: Content {
+    public let title: String
+    public let content: String
+    public let categories, tags: [Int]?
+    public let featured_media: Int?
+    public let slug: String?
+    public let link: String?
+    public let status: String?
+    
+    public init(
+         slug: String? = nil,
+         status: String? = nil,
+         type: String? = nil,
+         link: String? = nil,
+         title: String,
+         content: String,
+         featured_media: Int? = nil,
+         categories: [Int]? = nil,
+         tags: [Int]? = nil) {
+        self.slug = slug
+        self.status = status
+        self.link = link
+        self.title = title
+        self.content = content
+        self.featured_media = featured_media
+        self.categories = categories
+        self.tags = tags
+    }
 }
 
 public struct WordpressPost: Content {
