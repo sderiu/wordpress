@@ -86,7 +86,7 @@ public class Posts {
                 try request.content.encode(post)
             }.flatMapThrowing{ response in
                 guard [.ok, .created].contains(response.status) else {
-                    throw Abort(response.status)
+                    throw Abort(response.status, reason: String(buffer: response.body!))
                 }
                 return try response.content.decode(WordpressPost.self)
             }
