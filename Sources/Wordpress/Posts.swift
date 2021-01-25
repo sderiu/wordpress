@@ -7,7 +7,15 @@
 
 import Vapor
 
-public class Posts: Wordpress {
+public class Posts {
+    
+    var domain: String
+    var request: Request
+    
+    init(_ req: Request) {
+        self.domain = req.application.wordpress.domain
+        self.request = req
+    }
     
     public func list() throws -> EventLoopFuture<[WordpressPost]>{
         let url = URI(string:"\(self.domain)\(Endpoints.posts.rawValue)")

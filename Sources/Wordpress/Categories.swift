@@ -7,7 +7,15 @@
 
 import Vapor
 
-public class Categories: Wordpress{
+public class Categories{
+    
+    var domain: String
+    var request: Request
+    
+    init(_ req: Request) {
+        self.domain = req.application.wordpress.domain
+        self.request = req
+    }
         
     public func list() throws -> EventLoopFuture<[WordpressCategory]>{
         let baseUrl = URI(string: "\(self.domain)\(Endpoints.categories.rawValue)")

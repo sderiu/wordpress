@@ -7,7 +7,15 @@
 
 import Vapor
 
-public class Tags: Wordpress{
+public class Tags{
+    
+    var domain: String
+    var request: Request
+    
+    init(_ req: Request) {
+        self.domain = req.application.wordpress.domain
+        self.request = req
+    }
         
     public func list() throws -> EventLoopFuture<[WordpressTag]>{
         let baseUrl = URI(string: "\(self.domain)\(Endpoints.tags.rawValue)")

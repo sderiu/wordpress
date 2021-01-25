@@ -7,7 +7,15 @@
 
 import Vapor
 
-public class Medias: Wordpress {
+public class Medias {
+    
+    var domain: String
+    var request: Request
+    
+    init(_ req: Request) {
+        self.domain = req.application.wordpress.domain
+        self.request = req
+    }
     
     public func upload(file: File) throws -> EventLoopFuture<WordpressMedia>{
         let data = file.data

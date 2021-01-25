@@ -8,9 +8,6 @@
 import Vapor
 
 public class Wordpress{
-    
-    internal var domain: String
-    internal var request: Request
 
     public var posts: Posts
     public var media: Medias
@@ -18,12 +15,10 @@ public class Wordpress{
     public var tags: Tags
     
     init(_ req: Request) {
-        self.domain = req.application.wordpress.domain
         self.posts = Posts(req)
         self.media = Medias(req)
         self.categories = Categories(req)
         self.tags = Tags(req)
-        self.request = req
     }
 
 }
