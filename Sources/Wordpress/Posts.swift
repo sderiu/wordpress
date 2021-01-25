@@ -160,9 +160,7 @@ public class Posts {
 public struct WordpressPost: Content {
     public let id: Int?
     public let password: String?
-    public let date, date_gmt: Date?
     public let guid: Object?
-    public let modified, modified_gmt: Date?
     public let slug, status: String?
     public let type: String?
     public let link: String?
@@ -177,11 +175,7 @@ public struct WordpressPost: Content {
     
     public init(id: Int? = nil,
          password: String? = nil,
-         date: Date? = nil,
-         date_gmt: Date? = nil,
          guid: Object? = nil,
-         modified: Date? = nil,
-         modified_gmt: Date? = nil,
          slug: String? = nil,
          status: String? = nil,
          type: String? = nil,
@@ -201,11 +195,7 @@ public struct WordpressPost: Content {
          featured_image_url: String? = nil) {
         self.id = id
         self.password = password
-        self.date = date
-        self.date_gmt = date_gmt
         self.guid = guid
-        self.modified = modified
-        self.modified_gmt = modified_gmt
         self.slug = slug
         self.status = status
         self.type = type

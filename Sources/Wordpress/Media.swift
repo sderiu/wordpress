@@ -67,9 +67,7 @@ public class Medias {
 
 public struct WordpressMedia: Content {
     public let id: Int?
-    public let date, date_gmt: Date?
     public let guid: Object?
-    public let modified, modified_gmt: Date?
     public let slug, status: String?
     public let type: String?
     public let link: String?
@@ -84,8 +82,6 @@ public struct WordpressMedia: Content {
     public let caption: Object?
     
     public init(id: Int? = nil,
-         date: Date? = nil,
-         date_gmt: Date? = nil,
          guid: Object? = nil,
          modified: Date? = nil,
          modified_gmt: Date? = nil,
@@ -107,11 +103,7 @@ public struct WordpressMedia: Content {
          source_url: String? = nil,
          post: Int? = nil) {
         self.id = id
-        self.date = date
-        self.date_gmt = date_gmt
         self.guid = guid
-        self.modified = modified
-        self.modified_gmt = modified_gmt
         self.slug = slug
         self.status = status
         self.type = type
