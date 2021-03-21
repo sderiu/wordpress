@@ -60,7 +60,8 @@ public class Posts {
                        categories: [Int]? = nil,
                        tags: [Int]? = nil,
                        yoast_wpseo_title: String? = nil,
-                       yoast_wpseo_focuskw: String? = nil) throws
+                       yoast_wpseo_focuskw: String? = nil,
+                       yoast_wpseo_metadesc: String? = nil) throws
     -> EventLoopFuture<WordpressPost> {
         let post = WordpressPostCreateRequest(slug: slug,
                                  status: status,
@@ -72,7 +73,8 @@ public class Posts {
                                  categories: categories,
                                  tags: tags,
                                  yoast_wpseo_focuskw: yoast_wpseo_focuskw,
-                                 yoast_wpseo_title: yoast_wpseo_title)
+                                 yoast_wpseo_title: yoast_wpseo_title,
+                                 yoast_wpseo_metadesc: yoast_wpseo_metadesc)
         let url = URI(string:"\(self.domain)\(Endpoints.posts.rawValue)")
         return self.request.client
             .post(url, headers: self.request.headers) { (request) in
@@ -160,6 +162,7 @@ public struct WordpressPostCreateRequest: Content {
     public let status: String?
     public let yoast_wpseo_focuskw: String?
     public let yoast_wpseo_title: String?
+    public let yoast_wpseo_metadesc: String?
     
     public init(
          slug: String? = nil,
@@ -172,7 +175,8 @@ public struct WordpressPostCreateRequest: Content {
          categories: [Int]? = nil,
          tags: [Int]? = nil,
         yoast_wpseo_focuskw: String? = nil,
-        yoast_wpseo_title: String? = nil) {
+        yoast_wpseo_title: String? = nil,
+        yoast_wpseo_metadesc: String? = nil) {
         self.slug = slug
         self.status = status
         self.link = link
@@ -183,6 +187,7 @@ public struct WordpressPostCreateRequest: Content {
         self.tags = tags
         self.yoast_wpseo_title = yoast_wpseo_title
         self.yoast_wpseo_focuskw = yoast_wpseo_focuskw
+        self.yoast_wpseo_metadesc = yoast_wpseo_metadesc
     }
 }
 
