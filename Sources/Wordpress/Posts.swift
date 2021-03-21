@@ -58,7 +58,9 @@ public class Posts {
                        template: String? = nil,
                        format: String? = nil,
                        categories: [Int]? = nil,
-                       tags: [Int]? = nil) throws
+                       tags: [Int]? = nil,
+                       yoast_wpseo_title: String? = nil,
+                       yoast_wpseo_focuskw: String? = nil) throws
     -> EventLoopFuture<WordpressPost> {
         let post = WordpressPostCreateRequest(slug: slug,
                                  status: status,
@@ -68,7 +70,9 @@ public class Posts {
                                  content: content,
                                  featured_media: featured_media,
                                  categories: categories,
-                                 tags: tags)
+                                 tags: tags,
+                                 yoast_wpseo_focuskw: yoast_wpseo_focuskw,
+                                 yoast_wpseo_title: yoast_wpseo_title)
         let url = URI(string:"\(self.domain)\(Endpoints.posts.rawValue)")
         return self.request.client
             .post(url, headers: self.request.headers) { (request) in
@@ -154,6 +158,8 @@ public struct WordpressPostCreateRequest: Content {
     public let slug: String?
     public let link: String?
     public let status: String?
+    public let yoast_wpseo_focuskw: String?
+    public let yoast_wpseo_title: String?
     
     public init(
          slug: String? = nil,
@@ -164,7 +170,9 @@ public struct WordpressPostCreateRequest: Content {
          content: String,
          featured_media: Int? = nil,
          categories: [Int]? = nil,
-         tags: [Int]? = nil) {
+         tags: [Int]? = nil,
+        yoast_wpseo_focuskw: String? = nil,
+        yoast_wpseo_title: String? = nil) {
         self.slug = slug
         self.status = status
         self.link = link
@@ -173,6 +181,8 @@ public struct WordpressPostCreateRequest: Content {
         self.featured_media = featured_media
         self.categories = categories
         self.tags = tags
+        self.yoast_wpseo_title = yoast_wpseo_title
+        self.yoast_wpseo_focuskw = yoast_wpseo_focuskw
     }
 }
 
