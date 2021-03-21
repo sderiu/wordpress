@@ -160,9 +160,9 @@ public struct WordpressPostCreateRequest: Content {
     public let slug: String?
     public let link: String?
     public let status: String?
-    public let yoast_wpseo_focuskw: String?
-    public let yoast_wpseo_title: String?
-    public let yoast_wpseo_metadesc: String?
+    public let _yoast_wpseo_focuskw: String?
+    public let _yoast_wpseo_title: String?
+    public let _yoast_wpseo_metadesc: String?
     
     public init(
          slug: String? = nil,
@@ -185,9 +185,9 @@ public struct WordpressPostCreateRequest: Content {
         self.featured_media = featured_media
         self.categories = categories
         self.tags = tags
-        self.yoast_wpseo_title = yoast_wpseo_title
-        self.yoast_wpseo_focuskw = yoast_wpseo_focuskw
-        self.yoast_wpseo_metadesc = yoast_wpseo_metadesc
+        self._yoast_wpseo_title = yoast_wpseo_title
+        self._yoast_wpseo_focuskw = yoast_wpseo_focuskw
+        self._yoast_wpseo_metadesc = yoast_wpseo_metadesc
     }
 }
 
