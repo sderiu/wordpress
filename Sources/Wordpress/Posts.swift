@@ -63,18 +63,19 @@ public class Posts {
                        yoast_wpseo_focuskw: String? = nil,
                        yoast_wpseo_metadesc: String? = nil) throws
     -> EventLoopFuture<WordpressPost> {
+        let yoast = yoast_meta(yoast_wpseo_focuskw: yoast_wpseo_focuskw,
+                               yoast_wpseo_title: yoast_wpseo_title,
+                               yoast_wpseo_metadesc: yoast_wpseo_metadesc)
         let post = WordpressPostCreateRequest(slug: slug,
-                                 status: status,
-                                 type: type,
-                                 link: link,
-                                 title:  title,
-                                 content: content,
-                                 featured_media: featured_media,
-                                 categories: categories,
-                                 tags: tags,
-                                 yoast_wpseo_focuskw: yoast_wpseo_focuskw,
-                                 yoast_wpseo_title: yoast_wpseo_title,
-                                 yoast_wpseo_metadesc: yoast_wpseo_metadesc)
+                                              status: status,
+                                              type: type,
+                                              link: link,
+                                              title:  title,
+                                              content: content,
+                                              featured_media: featured_media,
+                                              categories: categories,
+                                              tags: tags,
+                                              yoast_meta: yoast)
         let url = URI(string:"\(self.domain)\(Endpoints.posts.rawValue)")
         return self.request.client
             .post(url, headers: self.request.headers) { (request) in
@@ -160,9 +161,7 @@ public struct WordpressPostCreateRequest: Content {
     public let slug: String?
     public let link: String?
     public let status: String?
-    public let _yoast_wpseo_focuskw: String?
-    public let _yoast_wpseo_title: String?
-    public let _yoast_wpseo_metadesc: String?
+    public let yoast_meta: yoast_meta?
     
     public init(
          slug: String? = nil,
@@ -174,9 +173,7 @@ public struct WordpressPostCreateRequest: Content {
          featured_media: Int? = nil,
          categories: [Int]? = nil,
          tags: [Int]? = nil,
-        yoast_wpseo_focuskw: String? = nil,
-        yoast_wpseo_title: String? = nil,
-        yoast_wpseo_metadesc: String? = nil) {
+        yoast_meta: yoast_meta? = nil) {
         self.slug = slug
         self.status = status
         self.link = link
@@ -185,9 +182,22 @@ public struct WordpressPostCreateRequest: Content {
         self.featured_media = featured_media
         self.categories = categories
         self.tags = tags
-        self._yoast_wpseo_title = yoast_wpseo_title
-        self._yoast_wpseo_focuskw = yoast_wpseo_focuskw
-        self._yoast_wpseo_metadesc = yoast_wpseo_metadesc
+        self.yoast_meta = yoast_meta
+    }
+}
+
+public struct yoast_meta: Content{
+    
+    public let yoast_wpseo_focuskw: String?
+    public let yoast_wpseo_title: String?
+    public let yoast_wpseo_metadesc: String?
+    
+    public init(yoast_wpseo_focuskw: String? = nil,
+        yoast_wpseo_title: String? = nil,
+        yoast_wpseo_metadesc: String? = nil){
+        self.yoast_wpseo_title = yoast_wpseo_title
+        self.yoast_wpseo_focuskw = yoast_wpseo_focuskw
+        self.yoast_wpseo_metadesc = yoast_wpseo_metadesc
     }
 }
 
